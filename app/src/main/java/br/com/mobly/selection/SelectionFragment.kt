@@ -9,7 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.enzoteles.quickhelp.fragment.HelpFragment
 import br.com.enzoteles.quickhelp.log.HelpLog
+import br.com.enzoteles.quickhelp.security.HelpSecurity
+import br.com.mobly.Constant
 import br.com.mobly.R
+import br.com.mobly.revision.RevisionFragment
 import br.com.mobly.selection.adapter.SelectionAdapter
 import br.com.sdk.webservice.domain.ArticlesItem
 import br.com.sdk.webservice.domain.JsonArticles
@@ -19,12 +22,13 @@ import kotlinx.android.synthetic.main.selection.*
 /**
  * create by enzo teles
  * */
-class SelectionFragment: HelpFragment(), SelectionMVP.View{
+class SelectionFragment: HelpFragment(), SelectionMVP.View, View.OnClickListener{
 
     lateinit var presenter: SelectionMVP.Presenter
     lateinit var adapter: SelectionAdapter
     lateinit var layoutManager: LinearLayoutManager
     private val PAGE_SIZE = 5
+    lateinit var revison: RevisionFragment
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         var view = inflater!!.inflate(R.layout.selection, container, false)
@@ -45,12 +49,15 @@ class SelectionFragment: HelpFragment(), SelectionMVP.View{
     override fun initUI() {
         bt_revision.alpha = 0.5f
         bt_revision.isEnabled = false
+        bt_revision.setOnClickListener(this)
+        Constant.tv_liked = tv_liked
     }
 
     /**
      * method load articles of the api
      * */
     override fun initData() {
+        avi.show()
         presenter.initData()
     }
 
@@ -66,6 +73,8 @@ class SelectionFragment: HelpFragment(), SelectionMVP.View{
         layoutManager = LinearLayoutManager(activity.baseContext, LinearLayoutManager.HORIZONTAL, false)
         recyclerview.layoutManager = layoutManager
         recyclerview.addOnScrollListener(recyclerViewOnScrollListener)
+        avi.hide()
+        layout_selection.visibility = View.VISIBLE
 
 
 
@@ -87,7 +96,7 @@ class SelectionFragment: HelpFragment(), SelectionMVP.View{
             HelpLog.info("firtsV ${firstVisibleItemPosition} ")
             if (visibleItemCount + firstVisibleItemPosition >= totalItemCount
                     && firstVisibleItemPosition >= 0
-                    && totalItemCount == PAGE_SIZE) {
+                    && totalItemCount >= PAGE_SIZE) {
                 HelpLog.info("count")
                 bt_revision.alpha = 1f
                 bt_revision.isEnabled = true
@@ -96,6 +105,11 @@ class SelectionFragment: HelpFragment(), SelectionMVP.View{
                 bt_revision.isEnabled = true
             }
         }
+    }
+
+    override fun onClick(v: View?) {
+        revison = RevisionFragment()
+        HelpSecurity.manager!!.replaceFragment(R.id.content, revison, "revision", true)
     }
 }
 

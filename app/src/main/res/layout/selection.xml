@@ -5,45 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="5"
     tools:context=".main.MainActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4" />
-
     <LinearLayout
+        android:id="@+id/layout_selection"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".5">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="5"
+        tools:context=".main.MainActivity">
 
-        <TextView
-            android:id="@+id/tv_liked"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="4" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+
+            <TextView
+                android:id="@+id/tv_liked"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:gravity="center|right"
+                android:text="0/10" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+
+            <Button
+                android:id="@+id/bt_revision"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight=".5"
+                android:background="@color/colorPrimary"
+                android:text="REVISION"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:visibility="visible">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="200px"
+            android:layout_height="200px"
             android:layout_gravity="center"
-            android:layout_marginRight="5dp"
-            android:gravity="center|right"
-            android:text="3/30" />
+            app:indicatorColor="@color/colorPrimary"
+            app:indicatorName="BallClipRotatePulseIndicator" />
+    </FrameLayout>
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".5">
-
-        <Button
-            android:id="@+id/bt_revision"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight=".5"
-            android:background="@color/colorPrimary"
-            android:text="REVISION"
-            android:textColor="@android:color/white" />
-    </LinearLayout>
 
 </LinearLayout>

@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface MoblyApiRest {
 
-    @GET("v2.0/categories/100/articles?appDomain=1&locale=de_DE&limit=5")
+    @GET("v2.0/categories/100/articles?appDomain=1&locale=de_DE&limit=10")
     fun artitles(): Observable<JsonArticles>
 
 /*    @GET("v1/articles/{href}")

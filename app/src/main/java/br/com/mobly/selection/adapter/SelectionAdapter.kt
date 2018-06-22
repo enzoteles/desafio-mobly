@@ -49,11 +49,19 @@ class SelectionAdapter(val articles: MutableList<ArticlesItem>, val context: Con
                     itemView.cb_liked.setBackgroundResource(R.drawable.like_2)
                     Constant.countLike = Constant.countLike!! + 1
                     article.checkSeleced = true
+                    if(article.checkSeleced!!){
+                        Constant.tv_liked!!.text = "${Constant.countLike}/10"
+                    }
+
                 }else{
                     itemView.cb_liked.setBackgroundResource(R.drawable.like_1)
                     article.checkSeleced = false
                     if (Constant.countLike != 0) {
-                        Constant.countLike = Constant.countLike!! - 1
+                        if(!article.checkSeleced!!){
+                            Constant.countLike = Constant.countLike!! - 1
+                            Constant.tv_liked!!.text = "${Constant.countLike}/10"
+                        }
+
                     }
                 }
             })
