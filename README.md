@@ -5,7 +5,7 @@
   2. picasso - para cache de imagem
   3. retrofit - integração com a api
   4. avi - biblioteca de progress
-  5. libhelp - minha própria bibliote de suporte para gerenciamento de fragmentos mais informações : https://github.com/enzoteles/libhelp
+  5. libhelp - minha própria biblioteca de suporte para gerenciamento de fragmentos mais informações : https://github.com/enzoteles/libhelp
   6. arquitetura MVP
   7. padrão de projeto iteractor
   8. recyclerview 
