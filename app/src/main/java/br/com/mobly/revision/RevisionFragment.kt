@@ -48,6 +48,7 @@ class RevisionFragment: HelpFragment(), SelectionMVP.View, View.OnClickListener{
     override fun initUI() {
         bt_list.setOnClickListener(this)
         bt_grid.setOnClickListener(this)
+        avi.show()
     }
 
     /**
@@ -69,7 +70,8 @@ class RevisionFragment: HelpFragment(), SelectionMVP.View, View.OnClickListener{
         rv_revision.adapter = adapterL
         layoutManager = LinearLayoutManager(activity.baseContext, LinearLayoutManager.VERTICAL, false)
         rv_revision.layoutManager = layoutManager
-
+        avi.hide()
+        layout_revision.visibility = View.VISIBLE
     }
 
     /**
