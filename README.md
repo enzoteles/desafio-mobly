@@ -11,5 +11,5 @@
   8. recyclerview 
   9. cardView
   10. padrão de projeot command
-  11. criei um sdk chamado "mobly-sdk" com as chamadas de api, se por acaso precisar utilazar em outro projeto
+  11. criei um sdk chamado "mobly-sdk" com as chamadas de api, se por acaso precisar utilizar em outro projeto
   
